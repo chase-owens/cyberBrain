@@ -1,68 +1,43 @@
+# Cyber Brain
+
+---
+
+Inspired by [Bird Brain](https://www3.uca.edu/iqzoo/Exhibits/bird_brain.htm).
+
+## Run the app
+
+To run the app [click here]() or follow the steps below.
+
+Clone the repository or download the zipped folder. Then open the terminal and navigate to the project folder, load the dependencies, and run the app with these commands.
+
+```
+cd cyberBrain
+npm install
+npm start
+```
+
+## Development
+
+This progressive web application is built with [React.js](https://reactjs.org).
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+All presentational components use [Material-UI](https://material-ui.com).
+Flip functionality took advantage of open-sourced [ReactCardFlip](https://www.npmjs.com/package/react-card-flip).
+Navigation is accomplished using [React Router Dom](https://www.npmjs.com/package/react-router-dom).
 
-## Available Scripts
+## Offline First
 
-In the project directory, you can run:
+Bootsrapping wit Create React App provides offline-first functionality for the production build. To create a production build of the app use the command
 
-### `npm start`
+```
+npm run build
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+instead of
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```
+npm start
+```
 
-### `npm test`
+## App Overview
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Tic-Tac-Toe app. Players can play on easy, hard, or tie-or-lose difficulty levels. On easy, the computer will win if it can or play in a random spot otherwise. On hard, the computer will win if it can, block player from winning, or play a random square. On tie-or-lose, the computer places its first move in the middle if it can or play in a corner otherwise. If the player is deploying the triangle, encirclement, or arrowhead strategy, the computer counters the strategy. Then if follows the rules of the hard difficulty: check if can win, check for blocking move, play random space.
