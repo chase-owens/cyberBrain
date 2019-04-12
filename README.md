@@ -18,15 +18,15 @@ npm start
 
 ## Development
 
-This progressive web application is built with [React.js](https://reactjs.org).
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-All presentational components use [Material-UI](https://material-ui.com).
-Flip functionality took advantage of open-sourced [ReactCardFlip](https://www.npmjs.com/package/react-card-flip).
-Navigation is accomplished using [React Router Dom](https://www.npmjs.com/package/react-router-dom).
+- This progressive web application is built with [React.js](https://reactjs.org).
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- All presentational components use [Material-UI](https://material-ui.com).
+- Flip functionality took advantage of open-sourced [ReactCardFlip](https://www.npmjs.com/package/react-card-flip).
+- Navigation is accomplished using [React Router Dom](https://www.npmjs.com/package/react-router-dom).
 
 ## Offline First
 
-Bootsrapping wit Create React App provides offline-first functionality for the production build. To create a production build of the app use the command
+Bootsrapping with Create React App provides offline-first functionality for the production build. To create a production build of the app use the command
 
 ```
 npm run build
