@@ -1,0 +1,22 @@
+{
+  "main.css": "/cyberBrain/static/css/main.17a8189c.chunk.css",
+  "main.js": "/cyberBrain/static/js/main.2e71a601.chunk.js",
+  "main.js.map": "/cyberBrain/static/js/main.2e71a601.chunk.js.map",
+  "runtime~main.js": "/cyberBrain/static/js/runtime~main.9ca875ba.js",
+  "runtime~main.js.map": "/cyberBrain/static/js/runtime~main.9ca875ba.js.map",
+  "static/js/2.945216f2.chunk.js": "/cyberBrain/static/js/2.945216f2.chunk.js",
+  "static/js/2.945216f2.chunk.js.map": "/cyberBrain/static/js/2.945216f2.chunk.js.map",
+  "index.html": "/cyberBrain/index.html",
+  "precache-manifest.4df329d45d5e3fc1e7d25e89d2168ea6.js": "/cyberBrain/precache-manifest.4df329d45d5e3fc1e7d25e89d2168ea6.js",
+  "service-worker.js": "/cyberBrain/service-worker.js",
+  "static/css/main.17a8189c.chunk.css.map": "/cyberBrain/static/css/main.17a8189c.chunk.css.map",
+  "static/media/BaileyGillaspyFigure5.jpg": "/cyberBrain/static/media/BaileyGillaspyFigure5.34a47fa6.jpg",
+  "static/media/birdbrain.jpg": "/cyberBrain/static/media/birdbrain.c7ec5257.jpg",
+  "static/media/birdbrain3.jpg": "/cyberBrain/static/media/birdbrain3.4b2884be.jpg",
+  "static/media/birdbrain9.jpg": "/cyberBrain/static/media/birdbrain9.66477714.jpg",
+  "static/media/birdbrainSkinner.jpg": "/cyberBrain/static/media/birdbrainSkinner.2aa44c05.jpg",
+  "static/media/birdbrain_1024X768.jpg": "/cyberBrain/static/media/birdbrain_1024X768.2751157b.jpg",
+  "static/media/chicken.png": "/cyberBrain/static/media/chicken.b89543da.png",
+  "static/media/o.png": "/cyberBrain/static/media/o.c9849407.png",
+  "static/media/x.png": "/cyberBrain/static/media/x.38341b85.png"
+}
