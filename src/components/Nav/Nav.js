@@ -20,7 +20,7 @@ const Nav = () => {
           <div className='TextWrap'>
             <Typography
               style={{ color: theme.palette.primary.contrastText }}
-              variant='display1'
+              variant='h6'
               className='TitleText'
             >
               # Cyber Brain

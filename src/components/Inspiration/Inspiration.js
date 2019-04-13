@@ -93,9 +93,7 @@ const Inspiration = () => {
         and of the other amazing acts they had. After IQ Zoo, Bob began to share
         his knowledge of animal training conducting ‘chicken camps’ that taught
         learners about types of reinforcers, schedules of reinforcement,
-        shaping, chaining, and stimulus control. He later led the training
-        program for the canines that were used to lead Seal Team 6 in the
-        capture of Osama Bin Laden.
+        shaping, chaining, and stimulus control.
       </Typography>
       <br />
       <Grid container justify='center'>
