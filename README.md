@@ -6,7 +6,7 @@ Inspired by [Bird Brain](https://www3.uca.edu/iqzoo/Exhibits/bird_brain.htm).
 
 ## Run the app
 
-To run the app [click here]() or follow the steps below.
+To run the app [click here](https://chase-owens.github.io/cyberBrain) or follow the steps below.
 
 Clone the repository or download the zipped folder. Then open the terminal and navigate to the project folder, load the dependencies, and run the app with these commands.
 
