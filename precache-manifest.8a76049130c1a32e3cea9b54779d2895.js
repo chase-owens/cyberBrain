@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "a676a851e35f098b0d50",
+    "revision": "368f97c246308ffb263b",
     "url": "/cyberBrain/static/css/main.17a8189c.chunk.css"
   },
   {
-    "revision": "a676a851e35f098b0d50",
-    "url": "/cyberBrain/static/js/main.2e71a601.chunk.js"
+    "revision": "368f97c246308ffb263b",
+    "url": "/cyberBrain/static/js/main.dadd72fb.chunk.js"
   },
   {
     "revision": "1d5e11ef9745231ea0d6",
@@ -52,7 +52,7 @@ self.__precacheManifest = [
     "url": "/cyberBrain/static/media/chicken.b89543da.png"
   },
   {
-    "revision": "c3e9ca414509d90495edecfc7a9c7972",
+    "revision": "5cae7a8d1cc1a1a02225d614c240f701",
     "url": "/cyberBrain/index.html"
   }
 ];
