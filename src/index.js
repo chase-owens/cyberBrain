@@ -6,6 +6,10 @@ import { Provider } from 'react-redux';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import ticTacToeApp from './rootReducer';
+
+const store = createStore(ticTacToeApp);
+console.log(store.getState());
 
 ReactDOM.render(
   <BrowserRouter>

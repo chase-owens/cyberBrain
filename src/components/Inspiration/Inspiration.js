@@ -107,8 +107,8 @@ const Inspiration = () => {
         Reinforcement Contingencies with Animals (ORCA), that hosted a
         conference that he was a speaker at every year. One year, I even got to
         pick him up from the airport. It was a bit nostalgic since he was
-        responsible for one of my favorite memories with my dad. So I built this
-        to honor the memory of my father and the legacy of the the Marian
+        responsible for one of my most cherished memories with my dad. So I
+        built this to honor the memory of my father and the legacy of Marian
         Breland Bailey, Keller Breland, and Bob Bailey.
       </Typography>
       <Typography variant='h4' style={{ margin: 20 }}>
