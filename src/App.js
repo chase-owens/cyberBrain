@@ -17,7 +17,7 @@ class App extends Component {
         <div
           style={{
             backgroundImage: `url(${chicken})`,
-            height: 'calc(100vh - 87px)',
+            height: 'calc(100vh - 75px)',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             marginTop: '87px'
