@@ -20,7 +20,7 @@ class App extends Component {
             height: 'calc(100vh - 75px)',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            marginTop: '87px'
+            marginTop: '75px'
           }}
         >
           <Nav />
