@@ -31,7 +31,7 @@ const Nav = () => {
           <Grid container justify='space-between'>
             <Grid item>
               <div className='NavButton'>
-                <Link style={{ textDecoration: 'none' }} to='/cyberBrain'>
+                <Link style={{ textDecoration: 'none' }} to='/'>
                   <Button
                     style={{
                       color: theme.palette.primary.contrastText

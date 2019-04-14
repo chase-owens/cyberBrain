@@ -25,7 +25,7 @@ class App extends Component {
         >
           <Nav />
           <main>
-            <Route exact path='/cyberBrain' render={() => <TicTacToe />} />
+            <Route exact path='/' render={() => <TicTacToe />} />
             <Route path='/inspiration' render={() => <Inspiration />} />
           </main>
         </div>
