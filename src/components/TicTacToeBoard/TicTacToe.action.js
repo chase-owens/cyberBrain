@@ -1,11 +1,11 @@
 export const flipCard = (index, mark) => ({
-  type: 'FLIP_CARD',
+  type: FLIP_CARD,
   index,
   mark
 });
 
 export const resetCards = () => ({
-  type: 'RESET_CARDS',
+  type: RESET_CARDS,
   cards: [
     { isFlipped: false, mark: '' },
     { isFlipped: false, mark: '' },

@@ -1,10 +1,10 @@
 export const addPlayerWin = winner => ({
-  type: 'ADD_PLAYER_WIN',
+  type: ADD_PLAYER_WIN,
   winner
 });
 
 export const addComputerWin = winner => ({
-  type: 'ADD_COMPUTER_WIN',
+  type: ADD_COMPUTER_WIN,
   winner
 });
 

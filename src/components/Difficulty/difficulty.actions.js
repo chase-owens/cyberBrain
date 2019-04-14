@@ -1,7 +1,9 @@
 export const setDifficulty = difficulty => ({
-  type: 'SET_DIFFICULTY',
+  type: SET_DIFFICULTY,
   difficulty
 });
+
+export const SET_DIFFICULTY = 'SET_DIFFICULTY';
 
 export const DifficultyOptions = {
   EASY: 'EASY',
