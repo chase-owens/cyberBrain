@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 import { createStore } from 'redux';
+import ticTacToeApp from './rootReducer';
 import { Provider } from 'react-redux';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom';
-import ticTacToeApp from './rootReducer';
+import './index.css';
 
 const store = createStore(ticTacToeApp);
 console.log(store.getState());

@@ -4,6 +4,12 @@ export const flipCard = (index, mark) => ({
   mark
 });
 
+export const updateGameState = (someoneHasWon, whoHasWon) => ({
+  type: UPDATE_GAME_STATE,
+  someoneHasWon,
+  whoHasWon
+});
+
 export const resetCards = () => ({
   type: RESET_CARDS,
   cards: [
@@ -21,3 +27,4 @@ export const resetCards = () => ({
 
 export const RESET_CARDS = 'RESET_CARDS';
 export const FLIP_CARD = 'FLIP_CARD';
+export const UPDATE_GAME_STATE = 'UPDATE_GAME_STATE';

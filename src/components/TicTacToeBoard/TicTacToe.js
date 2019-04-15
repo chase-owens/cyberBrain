@@ -1,11 +1,29 @@
 import React, { Component } from 'react';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { flipCard, updateGameState } from './TicTacToe.action';
+
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TTCCard from '../Card/TTCCard';
 import Difficulty from '../Difficulty/Difficulty';
 import ScoreBoard from '../ScoreBoard/ScoreBoard';
-import { theme } from '../../styles/theme/theme';
 import WinMessage from '../WinMessage/WinMessage';
+
+import { theme } from '../../styles/theme/theme';
+
+const mapStateToProps = state => {
+  console.log('STATE: ', state);
+  return {
+    cardArray2: state.tictactoeState.cards,
+    win2: state.tictactoeState.win
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ flipCard, updateGameState }, dispatch);
+};
 
 class TicTacToe extends Component {
   state = {
@@ -44,6 +62,8 @@ class TicTacToe extends Component {
   }
 
   render() {
+    const { cardArray2, win2 } = this.props;
+    console.log(cardArray2, win2);
     return (
       <section>
         <Grid
@@ -897,4 +917,7 @@ class TicTacToe extends Component {
   };
 }
 
-export default TicTacToe;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TicTacToe);
