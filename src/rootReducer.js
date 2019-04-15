@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import winMessageReducer from './components/WinMessage/winMessage.reducer';
-import scoreboardReducer from './components/ScoreBoard/';
+import scoreboardReducer from './components/ScoreBoard/scoreboard.reducer';
 import tictactoeReducer from './components/TicTacToeBoard/tictactoe.reducer';
 import difficultyReducer from './components/Difficulty/difficulty.reducer';
 

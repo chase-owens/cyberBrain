@@ -301,7 +301,6 @@ class TicTacToe extends Component {
     }
 
     const gameOver = this.getOpenSpaces().length;
-    console.log('Win: ', win, 'CardsLeft: ', gameOver);
 
     !win &&
       gameOver === 0 &&

@@ -3,23 +3,12 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import baileyGillaspy from '../../images/BaileyGillaspyFigure5.jpg';
-import birdBrain5x7 from '../../images/birdbrain_1024X768.jpg';
 import birdBrain1 from '../../images/birdbrain.jpg';
 import birdBrain2 from '../../images/birdbrain3.jpg';
-import birdBrain3 from '../../images/birdbrain9.jpg';
 import birdSkinner from '../../images/birdbrainSkinner.jpg';
 import { theme } from '../../styles/theme/theme';
 
 const Inspiration = () => {
-  const pictures = [
-    baileyGillaspy,
-    birdBrain5x7,
-    birdBrain1,
-    birdBrain2,
-    birdSkinner,
-    birdBrain3
-  ];
   return (
     <Paper style={{ width: '100%', height: '100%', paddingTop: 10 }}>
       <Typography variant='h5' style={{ margin: 20 }}>

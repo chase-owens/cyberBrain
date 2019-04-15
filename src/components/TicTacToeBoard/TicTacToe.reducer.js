@@ -1,5 +1,4 @@
-import RESET_CARDS from './TicTacToe.action';
-import FLIP_CARD from './TicTacToe.action';
+import * as cards from './TicTacToe.action';
 
 const initialState = {
   cards: [
@@ -15,14 +14,14 @@ const initialState = {
   ]
 };
 
-export const tictactoeReducer = (state = initialState, action) => {
+const tictactoeReducer = (state = initialState, action) => {
   const play = { isFlipped: true, mark: action.mark };
   switch (action.type) {
-    case FLIP_CARD:
+    case cards.FLIP_CARD:
       return Object.assign({}, state, {
         cards: state.cards.splice(action.index, 1, play)
       });
-    case RESET_CARDS:
+    case cards.RESET_CARDS:
       return Object.assign({}, state, {
         cards: initialState
       });
@@ -30,3 +29,5 @@ export const tictactoeReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default tictactoeReducer;

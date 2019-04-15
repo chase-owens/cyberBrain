@@ -1,12 +1,12 @@
-import TOGGLE_MESSAGE from './winMessage.action';
+import * as winMessage from './winMessage.action';
 
 const initialState = {
   open: false
 };
 
-export const winMessageReducer = (state = initialState, action) => {
+const winMessageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TOGGLE_MESSAGE:
+    case winMessage.TOGGLE_MESSAGE:
       return Object.assign({}, state, {
         open: !state.open
       });
@@ -14,3 +14,5 @@ export const winMessageReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default winMessageReducer;

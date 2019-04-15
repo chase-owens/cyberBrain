@@ -1,11 +1,10 @@
-import SET_DIFFICULTY from './difficulty.actions';
-import DifficultyOptions from './difficulty.actions';
+import * as difficultyActions from './difficulty.actions';
 
-const { EASY } = DifficultyOptions;
+const { EASY } = difficultyActions.DifficultyOptions;
 
-export const difficultyReducer = (state = EASY, action) => {
+const difficultyReducer = (state = EASY, action) => {
   switch (action.type) {
-    case SET_DIFFICULTY:
+    case difficultyActions.SET_DIFFICULTY:
       return Object.assign({}, state, {
         difficulty: action.difficulty
       });
@@ -13,3 +12,5 @@ export const difficultyReducer = (state = EASY, action) => {
       return state;
   }
 };
+
+export default difficultyReducer;
