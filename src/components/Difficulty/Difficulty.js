@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { theme } from '../../styles/theme/theme';
 
-const Difficulty = ({ difficulty, changeDifficulty }) => {
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { setDifficulty } from './difficulty.actions';
+
+const mapStateToProps = state => {
+  return {
+    difficulty: state.difficultyState
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ setDifficulty }, dispatch);
+};
+
+const Difficulty = ({ difficulty, setDifficulty }) => {
+  console.log('Difficulty: ', difficulty);
   return (
     <section style={{ width: 170 }}>
       <FormControl>
@@ -19,15 +34,18 @@ const Difficulty = ({ difficulty, changeDifficulty }) => {
           style={{ width: 200 }}
           id='difficulty'
           value={difficulty}
-          onChange={changeDifficulty}
+          onChange={e => setDifficulty(e.target.value)}
         >
-          <MenuItem value='easy'>Easy</MenuItem>
-          <MenuItem value='difficult'>Difficult</MenuItem>
-          <MenuItem value='impossible'>Tie or Lose</MenuItem>
+          <MenuItem value='EASY'>Easy</MenuItem>
+          <MenuItem value='DIFFICULT'>Difficult</MenuItem>
+          <MenuItem value='IMPOSSIBLE'>Tie or Lose</MenuItem>
         </Select>
       </FormControl>
     </section>
   );
 };
 
-export default Difficulty;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Difficulty);

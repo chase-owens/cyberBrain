@@ -14,10 +14,11 @@ import WinMessage from '../WinMessage/WinMessage';
 import { theme } from '../../styles/theme/theme';
 
 const mapStateToProps = state => {
-  console.log('STATE: ', state);
+  // console.log('STATE: ', state);
   return {
     cardArray2: state.tictactoeState.cards,
-    win2: state.tictactoeState.win
+    win2: state.tictactoeState.win,
+    difficultyState: state.difficultyState
   };
 };
 
@@ -39,7 +40,6 @@ class TicTacToe extends Component {
       { isFlipped: false, mark: '' }
     ],
     player1: true,
-    difficulty: 'easy',
     win: { someoneHasWon: false, whoHasWon: null },
     player1Wins: 0,
     computerWins: 0,
@@ -62,8 +62,8 @@ class TicTacToe extends Component {
   }
 
   render() {
-    const { cardArray2, win2 } = this.props;
-    console.log(cardArray2, win2);
+    const { cardArray2, win2, difficultyState } = this.props;
+    console.log(cardArray2, win2, difficultyState);
     return (
       <section>
         <Grid
@@ -77,10 +77,7 @@ class TicTacToe extends Component {
           justify='space-between'
         >
           <Grid item>
-            <Difficulty
-              changeDifficulty={this.changeDifficulty}
-              difficulty={this.state.difficulty}
-            />
+            <Difficulty />
           </Grid>
           <Grid item>
             <Button
@@ -122,10 +119,7 @@ class TicTacToe extends Component {
           }}
           section
         >
-          <ScoreBoard
-            player1Wins={this.state.player1Wins}
-            computerWins={this.state.computerWins}
-          />
+          <ScoreBoard />
         </Grid>
         <WinMessage
           open={this.state.open}
@@ -345,11 +339,6 @@ class TicTacToe extends Component {
     let card = { isFlipped: true, mark: mark };
     cardArray.splice(index, 1, card);
     this.setState({ cardArray }, () => this.checkForWin());
-  };
-
-  changeDifficulty = evt => {
-    let difficulty = evt.target.value;
-    this.setState({ difficulty });
   };
 
   determineWhereOnBoardFromIndex = index => {

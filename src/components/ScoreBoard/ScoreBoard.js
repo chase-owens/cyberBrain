@@ -2,6 +2,15 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+  return {
+    player1Wins: state.scoreboardState.player1Wins,
+    computerWins: state.scoreboardState.computerWins
+  };
+};
+
 const ScoreBoard = ({ player1Wins, computerWins }) => {
   return (
     <Grid container justify='space-between' style={{ width: '100%' }}>
@@ -29,4 +38,4 @@ const ScoreBoard = ({ player1Wins, computerWins }) => {
   );
 };
 
-export default ScoreBoard;
+export default connect(mapStateToProps)(ScoreBoard);

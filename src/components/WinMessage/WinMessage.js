@@ -3,6 +3,9 @@ import SnackBar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import { theme } from '../../styles/theme/theme';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 const WinMessage = ({ open, handleCloseWinMessage, winner }) => {
   let winMessage;
   winner === null && (winMessage = "Kiss your cousin, it's a tie");
