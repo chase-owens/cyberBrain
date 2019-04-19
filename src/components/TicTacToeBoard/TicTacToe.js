@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { flipCard, updateGameState } from './TicTacToe.action';
+import { addComputerWin, addPlayerWin } from '../ScoreBoard/scoreboard.action';
 
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -17,13 +18,16 @@ const mapStateToProps = state => {
   // console.log('STATE: ', state);
   return {
     cardArray2: state.tictactoeState.cards,
-    win2: state.tictactoeState.win,
+    win: state.tictactoeState.win,
     difficultyState: state.difficultyState
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ flipCard, updateGameState }, dispatch);
+  return bindActionCreators(
+    { flipCard, updateGameState, addComputerWin, addPlayerWin },
+    dispatch
+  );
 };
 
 class TicTacToe extends Component {
@@ -40,17 +44,14 @@ class TicTacToe extends Component {
       { isFlipped: false, mark: '' }
     ],
     player1: true,
-    win: { someoneHasWon: false, whoHasWon: null },
-    player1Wins: 0,
-    computerWins: 0,
     open: false
   };
 
   componentDidMount() {}
 
   componentDidUpdate(prevProps, prevState) {
-    this.state.win !== prevState.win &&
-      this.state.win.someoneHasWon !== false &&
+    this.props.win !== prevState.win &&
+      this.props.win.someoneHasWon !== false &&
       this.setState({ open: true });
 
     this.state.cardArray !== prevState.cardArray &&
@@ -62,8 +63,8 @@ class TicTacToe extends Component {
   }
 
   render() {
-    const { cardArray2, win2, difficultyState } = this.props;
-    console.log(cardArray2, win2, difficultyState);
+    const { cardArray2, win, difficultyState } = this.props;
+    console.log(cardArray2, win);
     return (
       <section>
         <Grid
@@ -124,7 +125,6 @@ class TicTacToe extends Component {
         <WinMessage
           open={this.state.open}
           handleCloseWinMessage={this.handleCloseWinMessage}
-          winner={this.state.win.whoHasWon}
         />
       </section>
     );
@@ -132,7 +132,7 @@ class TicTacToe extends Component {
 
   handleCardClick = e => {
     let player1 = this.state.player1;
-    let win = this.state.win.someoneHasWon;
+    let win = this.props.win.someoneHasWon;
     if (player1 && !win) {
       this.play(e);
     }
@@ -146,21 +146,23 @@ class TicTacToe extends Component {
 
   getComputerMove = () => {
     if (
-      this.state.win.someoneHasWon === false &&
+      this.props.win.someoneHasWon === false &&
       this.getOpenSpaces().length > 0
     ) {
       setTimeout(() => {
         if (this.state.player1 === false) {
-          switch (this.state.difficulty) {
-            case 'easy':
+          switch (this.props.difficultyState) {
+            case 'EASY':
               this.easyPlay();
               break;
-            case 'difficult':
+            case 'DIFFICULT':
               this.difficultPlay();
               break;
-            default:
+            case 'IMPOSSIBLE':
               this.impossiblePlay();
               break;
+            default:
+              return;
           }
         }
       }, this.getRandomNumber(4) * 100);

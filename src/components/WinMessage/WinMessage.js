@@ -4,7 +4,10 @@ import IconButton from '@material-ui/core/IconButton';
 import { theme } from '../../styles/theme/theme';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+
+const mapStateToProps = state => {
+  return { winner: state.tictactoeState.win };
+};
 
 const WinMessage = ({ open, handleCloseWinMessage, winner }) => {
   let winMessage;
@@ -38,4 +41,4 @@ const WinMessage = ({ open, handleCloseWinMessage, winner }) => {
   );
 };
 
-export default WinMessage;
+export default connect(mapStateToProps)(WinMessage);
