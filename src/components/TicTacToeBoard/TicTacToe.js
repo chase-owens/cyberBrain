@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
 import {
   updateCards,
+  setComputerMove,
   resetGame,
   declareWin,
   changeTurn
@@ -33,6 +35,7 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
       updateCards,
+      setComputerMove,
       declareWin,
       addComputerWin,
       addPlayerWin,
@@ -66,6 +69,8 @@ class TicTacToe extends Component {
           return;
       }
     }
+
+    this.props.cards !== prevProps.cards && this.checkForWin();
 
     // Get Computer Move
     this.props.player1 !== prevProps.player1 &&
@@ -146,23 +151,21 @@ class TicTacToe extends Component {
 
   getComputerMove = () => {
     if (this.props.win === null && this.getOpenSpaces().length > 0) {
-      setTimeout(() => {
-        if (this.props.player1 === false) {
-          switch (this.props.difficultyState) {
-            case 'EASY':
-              this.easyPlay();
-              break;
-            case 'DIFFICULT':
-              this.difficultPlay();
-              break;
-            case 'IMPOSSIBLE':
-              this.impossiblePlay();
-              break;
-            default:
-              return;
-          }
+      if (this.props.player1 === false) {
+        switch (this.props.difficultyState) {
+          case 'EASY':
+            this.easyPlay();
+            break;
+          case 'DIFFICULT':
+            this.difficultPlay();
+            break;
+          case 'IMPOSSIBLE':
+            this.impossiblePlay();
+            break;
+          default:
+            return;
         }
-      }, this.getRandomNumber(6) * 100);
+      }
     }
   };
 
@@ -297,11 +300,14 @@ class TicTacToe extends Component {
 
   play = index => {
     const mark = this.props.player1 ? 'x' : 'o';
-    let cards = this.props.cards;
+    let cards = this.props.cards.slice(0);
     let card = { isFlipped: true, mark: mark };
     cards.splice(index, 1, card);
-    this.props.updateCards(cards);
-    this.checkForWin();
+    console.log(this.props.player1);
+    this.props.player1
+      ? this.props.updateCards(cards)
+      : this.props.setComputerMove(cards);
+    // this.checkForWin();
   };
 
   determineWhereOnBoardFromIndex = index => {

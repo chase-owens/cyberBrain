@@ -3,6 +3,14 @@ export const updateCards = cards => ({
   cards
 });
 
+export const setComputerMove = cards => {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(updateCards(cards));
+    }, 700);
+  };
+};
+
 export const declareWin = winner => ({
   type: UPDATE_GAME_STATE,
   win: winner

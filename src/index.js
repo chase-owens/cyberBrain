@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import ticTacToeApp from './rootReducer';
 import { Provider } from 'react-redux';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 
-const store = createStore(ticTacToeApp);
+const store = createStore(ticTacToeApp, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
