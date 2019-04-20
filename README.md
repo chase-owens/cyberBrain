@@ -24,6 +24,7 @@ npm start
 - Flip functionality took advantage of open-sourced [ReactCardFlip](https://www.npmjs.com/package/react-card-flip).
 - Navigation is accomplished using [React Router Dom](https://www.npmjs.com/package/react-router-dom).
 - Data was managed with [Redux](https://redux.js.org).
+- Used [Redux Thunk](https://www.npmjs.com/package/redux-thunk) to delay the computer play.
 
 ## Offline First
 
