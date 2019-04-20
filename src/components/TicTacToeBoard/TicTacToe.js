@@ -67,6 +67,7 @@ class TicTacToe extends Component {
       }
     }
 
+    // Get Computer Move
     this.props.player1 !== prevProps.player1 &&
       this.props.player1 === false &&
       this.getComputerMove();
