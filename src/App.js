@@ -8,30 +8,26 @@ import { MuiThemeProvider } from '@material-ui/core';
 import { theme } from './styles/theme/theme';
 import { Route } from 'react-router-dom';
 
-class App extends Component {
-  state = {};
-
-  render() {
-    return (
-      <MuiThemeProvider theme={theme}>
-        <div
-          style={{
-            backgroundImage: `url(${chicken})`,
-            height: 'calc(100vh - 75px)',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            marginTop: '75px'
-          }}
-        >
-          <Nav />
-          <main>
-            <Route exact path='/' render={() => <TicTacToe />} />
-            <Route path='/inspiration' render={() => <Inspiration />} />
-          </main>
-        </div>
-      </MuiThemeProvider>
-    );
-  }
-}
+const App = () => {
+  return (
+    <MuiThemeProvider theme={theme}>
+      <div
+        style={{
+          backgroundImage: `url(${chicken})`,
+          height: 'calc(100vh - 75px)',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          marginTop: '75px'
+        }}
+      >
+        <Nav />
+        <main>
+          <Route exact path='/' render={() => <TicTacToe />} />
+          <Route path='/inspiration' render={() => <Inspiration />} />
+        </main>
+      </div>
+    </MuiThemeProvider>
+  );
+};
 
 export default App;

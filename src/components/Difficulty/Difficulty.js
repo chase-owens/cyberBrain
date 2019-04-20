@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -20,7 +20,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 const Difficulty = ({ difficulty, setDifficulty }) => {
-  console.log('Difficulty: ', difficulty);
   return (
     <section style={{ width: 170 }}>
       <FormControl>

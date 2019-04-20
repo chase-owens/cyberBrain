@@ -1,30 +1,22 @@
-export const flipCard = (index, mark) => ({
-  type: FLIP_CARD,
-  index,
-  mark
+export const updateCards = cards => ({
+  type: UPDATE_CARDS,
+  cards
 });
 
-export const updateGameState = (someoneHasWon, whoHasWon) => ({
+export const declareWin = winner => ({
   type: UPDATE_GAME_STATE,
-  someoneHasWon,
-  whoHasWon
+  win: winner
 });
 
-export const resetCards = () => ({
-  type: RESET_CARDS,
-  cards: [
-    { isFlipped: false, mark: '' },
-    { isFlipped: false, mark: '' },
-    { isFlipped: false, mark: '' },
-    { isFlipped: false, mark: '' },
-    { isFlipped: false, mark: '' },
-    { isFlipped: false, mark: '' },
-    { isFlipped: false, mark: '' },
-    { isFlipped: false, mark: '' },
-    { isFlipped: false, mark: '' }
-  ]
+export const resetGame = () => ({
+  type: RESET_GAME
 });
 
-export const RESET_CARDS = 'RESET_CARDS';
-export const FLIP_CARD = 'FLIP_CARD';
+export const changeTurn = () => ({
+  type: CHANGE_PLAYER_TURN
+});
+
+export const CHANGE_PLAYER_TURN = 'CHANGE_PLAYER_TURN';
+export const RESET_GAME = 'RESET_GAME';
+export const UPDATE_CARDS = 'UPDATE_CARDS';
 export const UPDATE_GAME_STATE = 'UPDATE_GAME_STATE';

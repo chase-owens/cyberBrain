@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { flipCard, updateGameState } from './TicTacToe.action';
+import {
+  updateCards,
+  resetGame,
+  declareWin,
+  changeTurn
+} from './TicTacToe.action';
 import { addComputerWin, addPlayerWin } from '../ScoreBoard/scoreboard.action';
+import { toggleWinMessage } from '../WinMessage/winMessage.action';
 
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -15,56 +21,59 @@ import WinMessage from '../WinMessage/WinMessage';
 import { theme } from '../../styles/theme/theme';
 
 const mapStateToProps = state => {
-  // console.log('STATE: ', state);
   return {
-    cardArray2: state.tictactoeState.cards,
+    cards: state.tictactoeState.cards,
     win: state.tictactoeState.win,
+    player1: state.tictactoeState.player1,
     difficultyState: state.difficultyState
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
-    { flipCard, updateGameState, addComputerWin, addPlayerWin },
+    {
+      updateCards,
+      declareWin,
+      addComputerWin,
+      addPlayerWin,
+      toggleWinMessage,
+      resetGame,
+      changeTurn
+    },
     dispatch
   );
 };
 
 class TicTacToe extends Component {
-  state = {
-    cardArray: [
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' }
-    ],
-    player1: true,
-    open: false
-  };
-
   componentDidMount() {}
 
   componentDidUpdate(prevProps, prevState) {
-    this.props.win !== prevState.win &&
-      this.props.win.someoneHasWon !== false &&
-      this.setState({ open: true });
+    // Handle Win
+    if (this.props.win !== prevProps.win && this.props.win !== null) {
+      switch (this.props.win) {
+        case 'WIN':
+          this.props.addPlayerWin();
+          this.props.toggleWinMessage();
+          break;
+        case 'LOSE':
+          this.props.addComputerWin();
+          this.props.toggleWinMessage();
+          break;
+        case 'TIE':
+          this.props.toggleWinMessage();
+          break;
+        default:
+          return;
+      }
+    }
 
-    this.state.cardArray !== prevState.cardArray &&
-      console.log('Should check for win');
-
-    this.state.player1 !== prevState.player1 &&
-      this.state.player1 === false &&
+    this.props.player1 !== prevProps.player1 &&
+      this.props.player1 === false &&
       this.getComputerMove();
   }
 
   render() {
-    const { cardArray2, win, difficultyState } = this.props;
-    console.log(cardArray2, win);
+    const { cards } = this.props;
     return (
       <section>
         <Grid
@@ -82,7 +91,7 @@ class TicTacToe extends Component {
           </Grid>
           <Grid item>
             <Button
-              onClick={this.resetGame}
+              onClick={this.props.resetGame}
               style={{
                 marginTop: 8,
                 backgroundColor: theme.palette.text.light,
@@ -103,15 +112,16 @@ class TicTacToe extends Component {
           justify='space-between'
           spacing={8}
         >
-          {this.state.cardArray.map((card, i) => (
-            <Grid key={i} item style={{ width: '30.3%' }}>
-              <TTCCard
-                value={i}
-                card={card}
-                handleCardClick={this.handleCardClick}
-              />
-            </Grid>
-          ))}
+          {cards !== undefined &&
+            cards.map((card, i) => (
+              <Grid key={i} item style={{ width: '30.3%' }}>
+                <TTCCard
+                  value={i}
+                  card={card}
+                  handleCardClick={this.handleCardClick}
+                />
+              </Grid>
+            ))}
         </Grid>
         <Grid
           style={{
@@ -122,35 +132,21 @@ class TicTacToe extends Component {
         >
           <ScoreBoard />
         </Grid>
-        <WinMessage
-          open={this.state.open}
-          handleCloseWinMessage={this.handleCloseWinMessage}
-        />
+        <WinMessage />
       </section>
     );
   }
 
   handleCardClick = e => {
-    let player1 = this.state.player1;
-    let win = this.props.win.someoneHasWon;
-    if (player1 && !win) {
+    if (this.props.player1 && this.props.win === null) {
       this.play(e);
     }
   };
 
-  handleCloseWinMessage = (evt, reason) => {
-    setTimeout(() => {
-      this.setState({ open: false });
-    }, 400);
-  };
-
   getComputerMove = () => {
-    if (
-      this.props.win.someoneHasWon === false &&
-      this.getOpenSpaces().length > 0
-    ) {
+    if (this.props.win === null && this.getOpenSpaces().length > 0) {
       setTimeout(() => {
-        if (this.state.player1 === false) {
+        if (this.props.player1 === false) {
           switch (this.props.difficultyState) {
             case 'EASY':
               this.easyPlay();
@@ -165,27 +161,8 @@ class TicTacToe extends Component {
               return;
           }
         }
-      }, this.getRandomNumber(4) * 100);
+      }, this.getRandomNumber(6) * 100);
     }
-  };
-
-  resetGame = () => {
-    let cardArray = [
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' },
-      { isFlipped: false, mark: '' }
-    ];
-    this.setState({
-      cardArray,
-      player1: true,
-      win: { someoneHasWon: false, whoHasWon: null }
-    });
   };
 
   // -> T/F
@@ -210,11 +187,7 @@ class TicTacToe extends Component {
     switch (player1Moves.length) {
       case 3:
         win = this.checkTheseThreeForAWin(player1Moves);
-        win &&
-          this.setState((prevState, props) => ({
-            win: { someoneHasWon: true, whoHasWon: true },
-            player1Wins: prevState.player1Wins + 1
-          }));
+        win && this.props.declareWin('WIN');
         break;
       case 4:
         win = this.checkTheseThreeForAWin([
@@ -240,11 +213,7 @@ class TicTacToe extends Component {
             player1Moves[2],
             player1Moves[3]
           ]));
-        win &&
-          this.setState((prevState, props) => ({
-            win: { someoneHasWon: true, whoHasWon: true },
-            player1Wins: prevState.player1Wins + 1
-          }));
+        win && this.props.declareWin('WIN');
         break;
       case 5:
         win = this.checkTheseThreeForAWin([
@@ -306,11 +275,7 @@ class TicTacToe extends Component {
             player1Moves[3],
             player1Moves[4]
           ]));
-        win &&
-          this.setState((prevState, props) => ({
-            win: { someoneHasWon: true, whoHasWon: true },
-            player1Wins: prevState.player1Wins + 1
-          }));
+        win && this.props.declareWin('WIN');
         break;
       default:
         break;
@@ -318,15 +283,9 @@ class TicTacToe extends Component {
 
     const gameOver = this.getOpenSpaces().length;
 
-    !win &&
-      gameOver === 0 &&
-      this.setState({ win: { someoneHasWon: null, whoHasWon: null } });
+    !win && gameOver === 0 && this.props.declareWin('TIE');
 
-    !win &&
-      gameOver !== 0 &&
-      this.setState((prevState, props) => ({
-        player1: !prevState.player1
-      }));
+    !win && gameOver !== 0 && this.props.changeTurn();
 
     if (win || gameOver === 0) {
       return true;
@@ -336,11 +295,12 @@ class TicTacToe extends Component {
   };
 
   play = index => {
-    let cardArray = this.state.cardArray;
-    const mark = this.state.player1 ? 'x' : 'o';
+    const mark = this.props.player1 ? 'x' : 'o';
+    let cards = this.props.cards;
     let card = { isFlipped: true, mark: mark };
-    cardArray.splice(index, 1, card);
-    this.setState({ cardArray }, () => this.checkForWin());
+    cards.splice(index, 1, card);
+    this.props.updateCards(cards);
+    this.checkForWin();
   };
 
   determineWhereOnBoardFromIndex = index => {
@@ -356,7 +316,7 @@ class TicTacToe extends Component {
   // Finds first move -> [indexOfFirstMove, spot: 'corner', 'side', 'center']
   findFirstMove = () => {
     let indexPlayed = null;
-    this.state.cardArray.forEach((move, i) => {
+    this.props.cards.forEach((move, i) => {
       if (move.mark === 'x') {
         indexPlayed = i;
       }
@@ -609,7 +569,7 @@ class TicTacToe extends Component {
   getMovesPlayed = () => {
     let player1Moves = null;
     let computerMoves = null;
-    this.state.cardArray.map((move, i) => {
+    this.props.cards.map((move, i) => {
       if (move.mark === 'x' && player1Moves !== null) {
         player1Moves.push(i);
       } else if (move.mark === 'x') {
@@ -843,10 +803,7 @@ class TicTacToe extends Component {
     let win = this.checkIfCanWin();
     if (win !== null) {
       this.play(win);
-      this.setState((prevState, props) => ({
-        win: { someoneHasWon: true, whoHasWon: false },
-        computerWins: prevState.computerWins + 1
-      }));
+      this.props.declareWin('LOSE');
     } else {
       this.playRandomSquare();
     }
@@ -856,10 +813,7 @@ class TicTacToe extends Component {
     let win = this.checkIfCanWin();
     if (win !== null) {
       this.play(win);
-      this.setState((prevState, props) => ({
-        win: { someoneHasWon: true, whoHasWon: false },
-        computerWins: prevState.computerWins + 1
-      }));
+      this.props.declareWin('LOSE');
     } else {
       let block = this.checkRiskLosing();
       if (block !== null) {
@@ -885,10 +839,8 @@ class TicTacToe extends Component {
       let win = this.checkIfCanWin();
       if (win !== null) {
         this.play(win);
-        this.setState((prevState, props) => ({
-          win: { someoneHasWon: true, whoHasWon: false },
-          computerWins: prevState.computerWins + 1
-        }));
+        this.props.declareWin('LOSE');
+        addComputerWin();
       } else {
         let block = this.checkRiskLosing();
         if (block !== null) {

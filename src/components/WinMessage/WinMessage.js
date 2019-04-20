@@ -2,36 +2,52 @@ import React from 'react';
 import SnackBar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import { theme } from '../../styles/theme/theme';
+import { toggleWinMessage } from './winMessage.action';
 
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 const mapStateToProps = state => {
-  return { winner: state.tictactoeState.win };
+  return { winner: state.tictactoeState.win, open: state.winMessageState.open };
 };
 
-const WinMessage = ({ open, handleCloseWinMessage, winner }) => {
-  let winMessage;
-  winner === null && (winMessage = "Kiss your cousin, it's a tie");
-  winner !== null &&
-    (winner ? (winMessage = 'You Win!!') : (winMessage = 'Computer Wins!!'));
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ toggleWinMessage }, dispatch);
+};
 
+const getWinMessage = winner => {
+  let winMessage = null;
+
+  switch (winner) {
+    case 'TIE':
+      winMessage = "Kiss your cousin, it's a tie";
+      break;
+    case 'WIN':
+      winMessage = 'You Win!!';
+      break;
+    case 'LOSE':
+      winMessage = 'Computer Wins!!';
+      break;
+    default:
+      break;
+  }
+  return winMessage;
+};
+
+const WinMessage = ({ open, winner, toggleWinMessage }) => {
   return (
     <SnackBar
       anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
       open={open}
-      onClose={handleCloseWinMessage}
+      onClose={toggleWinMessage}
       autoHideDuration={5500}
       message={
         <span style={{ color: theme.palette.text.light }} id='win-message-id'>
-          {winMessage}
+          {getWinMessage(winner)}
         </span>
       }
       action={[
-        <IconButton
-          key='close'
-          aria-label='Close'
-          onClick={handleCloseWinMessage}
-        >
+        <IconButton key='close' aria-label='Close' onClick={toggleWinMessage}>
           <i style={{ color: theme.palette.error.main }} class='material-icons'>
             close
           </i>
@@ -41,4 +57,7 @@ const WinMessage = ({ open, handleCloseWinMessage, winner }) => {
   );
 };
 
-export default connect(mapStateToProps)(WinMessage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WinMessage);

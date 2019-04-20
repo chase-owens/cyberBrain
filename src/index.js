@@ -9,7 +9,6 @@ import * as serviceWorker from './serviceWorker';
 import './index.css';
 
 const store = createStore(ticTacToeApp);
-console.log(store.getState());
 
 ReactDOM.render(
   <Provider store={store}>
