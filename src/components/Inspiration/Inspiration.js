@@ -26,11 +26,21 @@ const Inspiration = () => {
       <br />
       <Grid container justify='center'>
         <Grid item>
-          <img
-            style={{ maxHeight: 450 }}
-            src={birdBrain2}
-            alt='SkinnerBailey&Marian'
-          />
+          <figure>
+            <img
+              style={{ maxHeight: 450 }}
+              src={birdBrain2}
+              alt='SkinnerBailey&Marian'
+            />
+            <figcaption>
+              B. F. Skinner, Robert 'Bob' Bailey, and Marian Breeland Bailey.
+              Click{' '}
+              <a href='https://www3.uca.edu/iqzoo/Exhibits/bird_brain.htm'>
+                here
+              </a>{' '}
+              for image source
+            </figcaption>
+          </figure>
         </Grid>
       </Grid>
       <br />
@@ -70,7 +80,21 @@ const Inspiration = () => {
       <br />
       <Grid container justify='center'>
         <Grid item>
-          <img style={{ maxHeight: 450 }} src={birdSkinner} alt='birdSkinner' />
+          <figure>
+            <img
+              style={{ maxHeight: 450 }}
+              src={birdSkinner}
+              alt='birdSkinner'
+            />
+            <figcaption>
+              B. F. Skinner trying to beat the Bird Brain, which he never did.
+              Click{' '}
+              <a href='https://www3.uca.edu/iqzoo/Exhibits/bird_brain.htm'>
+                here
+              </a>{' '}
+              for image source
+            </figcaption>
+          </figure>
         </Grid>
       </Grid>
       <br />
@@ -87,7 +111,16 @@ const Inspiration = () => {
       <br />
       <Grid container justify='center'>
         <Grid item>
-          <img src={birdBrain1} alt='birdBrainNoColor' />
+          <figure>
+            <img src={birdBrain1} alt='birdBrainNoColor' />
+            <figcaption>
+              A Bird Brain 'house'. Click{' '}
+              <a href='https://www3.uca.edu/iqzoo/Exhibits/bird_brain.htm'>
+                here
+              </a>{' '}
+              for image source
+            </figcaption>
+          </figure>
         </Grid>
       </Grid>
       <br />
