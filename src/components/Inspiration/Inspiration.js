@@ -8,7 +8,8 @@ import birdBrain2 from '../../images/birdbrain3.jpg';
 import birdSkinner from '../../images/birdbrainSkinner.jpg';
 import { theme } from '../../styles/theme/theme';
 
-const Inspiration = () => {
+const Inspiration = props => {
+  console.log(props);
   return (
     <Paper style={{ width: '100%', height: '100%', paddingTop: 10 }}>
       <Typography variant='h5' style={{ margin: 20 }}>
