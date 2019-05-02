@@ -116,18 +116,23 @@ class TicTacToe extends Component {
     );
   }
 
+  handleCloseWinMessage = (evt, reason) => {
+    setTimeout(() => {
+      this.setState({ open: false });
+    }, 400);
+  };
+
+  changeDifficulty = evt => {
+    let difficulty = evt.target.value;
+    this.setState({ difficulty });
+  };
+
   handleCardClick = e => {
     let player1 = this.state.player1;
     let win = this.state.win.someoneHasWon;
     if (player1 && !win) {
       this.play(e);
     }
-  };
-
-  handleCloseWinMessage = (evt, reason) => {
-    setTimeout(() => {
-      this.setState({ open: false });
-    }, 400);
   };
 
   getComputerMove = () => {
@@ -326,11 +331,6 @@ class TicTacToe extends Component {
     let card = { isFlipped: true, mark: mark };
     cardArray.splice(index, 1, card);
     this.setState({ cardArray }, () => this.checkForWin());
-  };
-
-  changeDifficulty = evt => {
-    let difficulty = evt.target.value;
-    this.setState({ difficulty });
   };
 
   determineWhereOnBoardFromIndex = index => {
