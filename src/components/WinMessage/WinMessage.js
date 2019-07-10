@@ -5,6 +5,7 @@ import { theme } from '../../styles/theme/theme';
 import { toggleWinMessage } from './winMessage.action';
 
 import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 const mapStateToProps = state => {
@@ -35,6 +36,8 @@ const getWinMessage = winner => {
 };
 
 const WinMessage = ({ open, winner, toggleWinMessage }) => {
+  let open1 = useSelector(state => state.winMessageState.open);
+  console.log(open1);
   return (
     <SnackBar
       anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
