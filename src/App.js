@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import Nav from './components/Nav/Nav';
 import TicTacToe from './components/TicTacToeBoard/TicTacToe';

@@ -79,7 +79,7 @@ class TicTacToe extends Component {
   }
 
   render() {
-    const { cards } = this.props;
+    const { cards, resetGame } = this.props;
     return (
       <section>
         <Grid
@@ -97,7 +97,7 @@ class TicTacToe extends Component {
           </Grid>
           <Grid item>
             <Button
-              onClick={this.props.resetGame}
+              onClick={resetGame}
               style={{
                 marginTop: 8,
                 backgroundColor: theme.palette.text.light,
@@ -185,8 +185,13 @@ class TicTacToe extends Component {
   // -> T/F - SetState win, player1
   checkForWin = () => {
     let moves = this.getMovesPlayed();
+    console.log(moves);
     let player1Moves = moves[0];
     let win = false;
+
+    if (player1Moves === null) {
+      return false;
+    }
 
     switch (player1Moves.length) {
       case 3:
